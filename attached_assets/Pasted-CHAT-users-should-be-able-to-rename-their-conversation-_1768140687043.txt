@@ -1,0 +1,48 @@
+CHAT
+⦁	users should be able to rename their conversation to avoid confusion
+⦁	users should be able to attach/send files or images to their chat 
+
+
+STRATEGIES
+⦁	There should be a back testing software in strategies so users can back-test if the strategy profitable
+⦁	users should be able to prompt ai into generating a new strategy 
+⦁	Strategies Page and the backtesting will draw the historical and live candles from the polygon/massive API
+⦁	add some strategies so it isn't blank starting off
+
+
+SETTINGS
+⦁	i want users to be able to input their Polygon/massive API key into a section in setting, and that is where live candle sticks data will come from.
+⦁	Users will have to input their own API keys into settings to access chat bot
+⦁	In the settings page, users should be able to change their password, add email/number for notification
+
+TOOLS
+⦁	add some useful tools so it isn't blank starting off
+
+
+KNOWLEDGE BASE
+⦁	Users should be able to drag material/files into knowledge base for the AI to analyse and then learn from so it can implement those tactics and train itself if needed
+⦁	add some knowledge so it isn't blank starting off
+
+CHARTS
+⦁	there should be multiple symbols built in already for Metals, Futures, Crypto, Stocks, CFDs
+⦁	In the drop down to select 'Crypto, Forex, Stocks'. Metals, futures and CFDs should be added to the list of things to select from.
+
+
+questions
+⦁	what are some ways we are able to get the charts and graph showing real candlesticks. i want an idea with little to no delay if it is not live data. you can propose anything to me however
+
+
+AI Features-
+Ai should be present every Page 
+⦁	Chat: done
+⦁	Journal: able to go through journal and pick out strengths and weakness
+⦁	Charts: Able to Analyse data using the charts 
+⦁	Strategies Ai is able to look at backrest results and propose changes to the strategy
+⦁	Tools: AI suggest useful tools and can go through the tools
+⦁	Playbooks: not really needed i think
+⦁	Knowledge: this is where everything AI has learnt will go. Users can also add files that ai can learn from. and AI can draw knowledge or information from this page as a memory bank
+⦁	Settings: not really needed in settings
+
+Are their any other improvements or fixes you think you can add
+
+i need you to ask me clarification questions before we proceed
