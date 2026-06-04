@@ -1,66 +1,63 @@
 # Architecture Overview
-> This document is authoritative. Implementation must strictly conform to it.
+> Authoritative context is `/CLAUDE.md`. The diagram below was corrected to
+> match the real stack (Vite + Express + Drizzle/Postgres). Older revisions of
+> this file described a Next.js/Prisma design that was never built.
 
 Understanding the Trading AI platform's technical architecture and data flow.
 
 ## System Overview
 
-Trading AI is built on a modern, full-stack TypeScript architecture:
+Trading AI is a full-stack TypeScript app: a Vite/React client and an Express
+API served from one Node process.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                       Frontend Layer                         │
-│  Next.js 14 App Router + React 19 + TypeScript + Tailwind   │
+│      Vite + React 19 + TypeScript + Tailwind v4 (Wouter)     │
 └───────────────────────┬─────────────────────────────────────┘
-                        │
+                        │  (Vite middleware in dev / static dist in prod)
 ┌───────────────────────┴─────────────────────────────────────┐
-│                    API Routes Layer                          │
-│         39 API endpoints (REST + Server-Sent Events)         │
+│                  Express 5 API Layer (tsx)                   │
+│            REST endpoints + Server-Sent Events               │
 └───────────────────────┬─────────────────────────────────────┘
                         │
         ┌───────────────┼───────────────┐
         │               │               │
-┌───────▼──────┐ ┌─────▼─────┐ ┌──────▼──────┐
-│   Database   │ │  AI APIs  │ │  External   │
-│ Prisma+SQLite│ │ Claude+GPT│ │ Pinecone    │
-│              │ │           │ │ Polygon     │
-└──────────────┘ └───────────┘ └─────────────┘
+┌───────▼──────┐ ┌─────▼─────┐ ┌──────▼──────────┐
+│   Database   │ │  AI APIs  │ │  Market Data    │
+│  PostgreSQL  │ │ Claude+GPT│ │ Binance/Coinbase│
+│  + Drizzle   │ │(user keys)│ │ /Polygon/etc.   │
+│  + pgvector  │ │           │ │                 │
+└──────────────┘ └───────────┘ └─────────────────┘
 ```
 
 ## Frontend Architecture
 
-### Next.js App Router
+### Vite + React (client/src)
 
-The application uses Next.js 14 App Router with the following structure:
+The client is a Vite single-page app. Routing is handled by Wouter, not a
+file-system router. Real structure:
 
 ```
-src/app/
-├── (auth)/              # Authentication pages (login, signup)
-│   ├── layout.tsx       # Auth layout wrapper
-│   ├── login/
-│   └── signup/
-│
-├── (dashboard)/         # Protected dashboard pages
-│   └── dashboard/
-│       ├── layout.tsx   # Dashboard shell with sidebar
-│       ├── page.tsx     # Chat interface (default)
-│       ├── journal/
-│       ├── charts/
-│       ├── strategies/
-│       ├── tools/
-│       ├── playbooks/
-│       ├── knowledge/
-│       └── settings/
-│
-└── api/                 # API route handlers
-    ├── auth/            # NextAuth endpoints
-    ├── chat/            # AI chat with streaming
-    ├── conversations/   # Conversation CRUD
-    ├── journal/         # Journal entry CRUD
-    ├── strategies/      # Strategy management
-    ├── knowledge/       # Knowledge base
-    └── ...
+client/
+├── index.html           # Vite entry HTML
+└── src/
+    ├── main.tsx         # App bootstrap
+    ├── App.tsx          # Routes (Wouter) + providers
+    ├── index.css        # Tailwind v4 entry
+    ├── pages/           # LoginPage, DashboardPage, ChatPage, JournalPage,
+    │                    #   ChartsPage, StrategiesPage, BacktestPage,
+    │                    #   AlertsPage, ToolsPage, PlaybooksPage,
+    │                    #   KnowledgePage, SettingsPage
+    ├── components/      # layout/ (Sidebar, DashboardLayout) + ui/ primitives
+    ├── contexts/        # ThemeContext, SidebarContext
+    ├── hooks/           # useAuth, ...
+    └── lib/             # utils, websocket client
 ```
+
+The Express API lives in `server/` (index.js, routes.js, auth.js, storage.js,
+db.js, encryption.js, marketData.js, backtesting.js). The shared Drizzle
+schema is `shared/schema.ts`.
 
 ### Component Architecture
 

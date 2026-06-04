@@ -1,5 +1,8 @@
 # Trading AI Documentation
-> This document is authoritative. Implementation must strictly conform to it.
+> Authoritative project context lives in `/CLAUDE.md` and `/replit.md`. Parts of
+> this `docs/` folder were written ahead of implementation and describe planned
+> behavior. Where a doc disagrees with the code, trust `shared/schema.ts`,
+> `server/routes.js`, and `/CLAUDE.md`.
 
 Welcome to the Trading AI Analysis Platform documentation. This guide will help you understand, set up, and use all features of the platform.
 
@@ -59,12 +62,14 @@ This documentation is organized into three main sections:
 
 ## Tech Stack
 
-- Next.js 14 + React 19 + TypeScript
-- Prisma ORM + SQLite
-- Anthropic Claude & OpenAI GPT
-- Pinecone Vector Database
-- Polygon Market Data API
-- TradingView Lightweight Charts
+- Vite + React 19 + TypeScript + Tailwind CSS v4 (routing via Wouter)
+- Express 5 on Node, run with `tsx` (single process serves API + Vite)
+- PostgreSQL + Drizzle ORM, with the `pgvector` extension for semantic search
+- bcrypt + session-token auth (sessions are in-memory)
+- Anthropic Claude & OpenAI GPT (user-provided API keys, encrypted in the DB)
+- TradingView Lightweight Charts v5
+- Market data: Binance/Coinbase/CoinGecko (free) plus Polygon/Alpha Vantage/
+  Twelve Data (key required)
 
 ## Need Help?
 

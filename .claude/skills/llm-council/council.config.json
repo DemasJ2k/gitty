@@ -1,0 +1,14 @@
+{
+  "//": "Config for OPTIONAL multi-vendor mode. Ignored while running Claude-only.",
+  "//mode": "Set OPENROUTER_API_KEY in .env, then members call OpenRouter with these models.",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "members": {
+    "council-architect": "anthropic/claude-sonnet-4.5",
+    "council-pragmatist": "openai/gpt-5.1",
+    "council-skeptic": "google/gemini-2.5-pro",
+    "council-domain": "anthropic/claude-sonnet-4.5"
+  },
+  "chairman": "anthropic/claude-opus-4.1",
+  "anonymizeReviews": true,
+  "confidenceScale": 10
+}
