@@ -7,8 +7,14 @@ for this venture. New research goes here so it is not lost between sessions.
 
 - [2026 Minimal-Intervention Business Report](./2026-minimal-intervention-business-report.md)
   — deep research across 7 digital business models + 2026 gaps, run through the
-  LLM Council. Decision: ship the existing app as a non-advisory BYOK trading
-  research/journaling SaaS, with a GEO/AEO pivot as the sequenced fallback.
+  LLM Council. First-pass decision under a "near-passive" priority: de-risk the
+  existing app as a non-advisory BYOK research/journaling SaaS, GEO/AEO as fallback.
+- [Australia: Buy vs Build Decision](./2026-australia-buy-vs-build-decision.md)
+  — **current, supersedes the first report's priority.** Re-scoped to Australia
+  and "reliable income fastest." Council decision (unanimous, chairman conf 8):
+  **build a single-vertical GEO/AEO + Google Business retainer service for AU
+  SMBs, sold manually; buy nothing; keep the trading app out of the income
+  plan.** One client at A$1,500+/mo hits target in 2–6 weeks.
 
 ## How these are produced
 
