@@ -1,0 +1,6 @@
+business_name,suburb,decision_maker,email,second_contact,audit_finding,status,touch_count,last_touch_date,next_action_date,tier_discussed,notes
+Example Dental,Bondi,Dr Jane Smith,jane@exampledental.au,linkedin.com/in/janesmith,"Invisible on ChatGPT/Gemini for 'best dentist Bondi'; 40 fewer reviews than competitor",touch_1_sent,1,2026-07-27,2026-07-30,,"Sample row - delete before use"
+,,,,,,not_started,0,,,,
+,,,,,,not_started,0,,,,
+,,,,,,not_started,0,,,,
+,,,,,,not_started,0,,,,
